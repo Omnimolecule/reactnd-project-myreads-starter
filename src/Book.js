@@ -3,7 +3,7 @@ import BookShelfChanger from './BookShelfChanger'
 import BookImage from './BookImage'
 
 const Book = (props) => {
-    const { book } = this.props
+    const { book } = props
     return (
         <div className="book">
             <div className="book-top">
