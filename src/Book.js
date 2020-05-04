@@ -7,11 +7,11 @@ const Book = (props) => {
     return (
         <div className="book">
             <div className="book-top">
-                <BookImage imageUrl={book.imageUrl} />
-                <BookShelfChanger shelf="currentlyReading" />
+                <BookImage imageUrl={book.imageLinks.smallThumbnail} />
+                <BookShelfChanger shelf={book.shelf} />
             </div>
             <div className="book-title">{book.title}</div>
-            <div className="book-authors">{book.author}</div>
+            <div className="book-authors">{book.authors.join(', ')}</div>
         </div>
     )
 }
