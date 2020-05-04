@@ -17,6 +17,18 @@ class Overview extends React.Component {
         });
     }
 
+    updateBookShelf = (book, newShelf) => {
+        BooksAPI.update(book, newShelf).then((result) => {
+            this.setState((prevState) => {
+                let newList = prevState.books
+                newList.find((b) => b.id === book.id).shelf = newShelf;
+                return {
+                    books: newList
+                }
+            });
+        })
+    }
+
     render() {
         return (
             <div className="list-books">
@@ -25,9 +37,15 @@ class Overview extends React.Component {
                 </div>
                 <div className="list-books-content">
                     <div>
-                        <Bookshelf title="Currently Reading" books={this.state.books.filter((book) => book.shelf === 'currentlyReading')} />
-                        <Bookshelf title="Want to Read" books={this.state.books.filter((book) => book.shelf === 'wantToRead')} />
-                        <Bookshelf title="Read" books={this.state.books.filter((book) => book.shelf === 'read')} />
+                        <Bookshelf title="Currently Reading"
+                            books={this.state.books.filter((book) => book.shelf === 'currentlyReading')}
+                            onBookShelfUpdated={this.updateBookShelf} />
+                        <Bookshelf
+                            title="Want to Read" books={this.state.books.filter((book) => book.shelf === 'wantToRead')}
+                            onBookShelfUpdated={this.updateBookShelf} />
+                        <Bookshelf
+                            title="Read" books={this.state.books.filter((book) => book.shelf === 'read')}
+                            onBookShelfUpdated={this.updateBookShelf} />
                     </div>
                 </div>
                 <Link to="/search" className="open-search">
