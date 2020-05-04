@@ -43,7 +43,9 @@ class Search extends React.Component {
             <div className="search-books">
                 <SearchBar onSearch={this.search}/>
                 <div className="search-books-results">
-                    <BookGrid books={this.state.books} />
+                    <BookGrid 
+                        books={this.state.books}
+                        onBookShelfUpdated={this.updateBookShelf} />
                 </div>
             </div>
         );
