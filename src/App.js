@@ -23,7 +23,18 @@ class BooksApp extends React.Component {
     BooksAPI.update(book, newShelf).then((result) => {
       this.setState((prevState) => {
         let newList = prevState.books
-        newList.find((b) => b.id === book.id).shelf = newShelf;
+
+        if (newShelf === 'none') {
+          newList = newList.filter((b) => b.id !== book.id);
+        } else {
+          let listBook = newList.find((b) => b.id === book.id);
+          if (listBook) {
+            listBook.shelf = newShelf;
+          } else {
+            newList.push(book);
+          }
+        }
+
         return {
           books: newList
         }
