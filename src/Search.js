@@ -2,8 +2,14 @@ import React from 'react'
 import BookGrid from './BookGrid'
 import SearchBar from './SearchBar'
 import * as BooksAPI from './BooksAPI'
+import PropTypes from 'prop-types';
 
 class Search extends React.Component {
+    static propTypes = {
+        onBookShelfUpdated: PropTypes.func.isRequired,
+        books: PropTypes.array.isRequired
+    }
+
     state = {
         booksSearchResult: []
     }

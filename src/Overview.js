@@ -1,6 +1,7 @@
 import React from 'react'
 import { Link } from 'react-router-dom'
 import Bookshelf from './Bookshelf'
+import PropTypes from 'prop-types';
 
 const Overview = (props) => {
     let { books } = props;
@@ -28,6 +29,11 @@ const Overview = (props) => {
         </div>
     );
 
+}
+
+Overview.propTypes = {
+    onBookShelfUpdated: PropTypes.func.isRequired,
+    books: PropTypes.array.isRequired
 }
 
 export default Overview

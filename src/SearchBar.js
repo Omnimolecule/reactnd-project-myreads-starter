@@ -1,7 +1,12 @@
 import React from 'react'
 import { Link } from 'react-router-dom'
+import PropTypes from 'prop-types';
 
 class SearchBar extends React.Component {
+    static propTypes = {
+        onSearch: PropTypes.func.isRequired
+    }
+
     state = {
         query: ''
     }
