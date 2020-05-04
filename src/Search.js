@@ -29,7 +29,7 @@ class Search extends React.Component {
     updateBookShelf = (book, newShelf) => {
         this.props.onBookShelfUpdated(book, newShelf);
         this.setState((prevState) => {
-            let newList = prevState.books
+            let newList = prevState.booksSearchResult
             newList.find((b) => b.id === book.id).shelf = newShelf;
             return {
                 booksSearchResult: newList
