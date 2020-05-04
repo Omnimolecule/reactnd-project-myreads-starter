@@ -13,7 +13,13 @@ class Search extends React.Component {
             BooksAPI.search(query).then((result) => {
                 let bookResult = []
                 if (Array.isArray(result)) {
-                    bookResult = result;
+                    bookResult = result.map((book) => {
+                        let bookInShelf = this.props.books.find((b) => b.id === book.id)
+                        if (bookInShelf) {
+                            book.shelf = bookInShelf.shelf;
+                        }
+                        return book;
+                    });
                 }
                 this.setState(() => ({
                     booksSearchResult: bookResult
